@@ -43,7 +43,7 @@ describe('SauceDemo Login Tests', () => {
 
     //expected failures - bugs
 
-    test('TC-013: Cannot add product with broken image (problem_user)', async ({ page }) => {
+    test('TC-013: Cannot add product with broken image (problem_user)',{ tag: '@known-bug' }, async ({ page }) => {
     await page.click('#react-burger-menu-btn');
     await page.click('#logout_sidebar_link');
     await page.fill('[data-test="username"]', 'problem_user');
@@ -53,7 +53,7 @@ describe('SauceDemo Login Tests', () => {
     await expect(firstImage).toHaveAttribute('src', /sl-404\.jpg/);
   });   
 
-  test('TC-014: Sorting Z-A does not reorder correctly for problem_user', async ({ page }) => {
+  test('TC-014: Sorting Z-A does not reorder correctly for problem_user',{ tag: '@known-bug' },  async ({ page }) => {
     await page.click('#react-burger-menu-btn');
     await page.click('#logout_sidebar_link');
     await page.fill('[data-test="username"]', 'problem_user');
@@ -64,7 +64,7 @@ describe('SauceDemo Login Tests', () => {
     await expect(firstProduct).toHaveText('Test.allTheThings() T-Shirt (Red)');
   })
 
-  test('TC-015: Products load slowly for performance_glitch_user', async ({ page }) => {
+  test('TC-015: Products load slowly for performance_glitch_user', { tag: '@known-bug' }, async ({ page }) => {
   const start = Date.now();
   await page.fill('[data-test="username"]', 'performance_glitch_user');
   await page.fill('[data-test="password"]', 'secret_sauce');
